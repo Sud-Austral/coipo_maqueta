@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Maquetas UIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Open+Sans:wght@400;600&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f2f4f3; --surface: #ffffff; --line: #dde3e0; --ink: #13202a; --ink-2: #44545e; --ink-3: #66747d;
+  --brand: #13324f; --brand-ink: #ecf2f7; --brand-ink-2: #a7bacb; --accent: #1e6a45; --accent-soft: #e2efe7;
+  --tag: #e9edeb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0f171d; --surface: #16222b; --line: #26363f; --ink: #e6ecef; --ink-2: #b3c0c7; --ink-3: #8b9aa3;
+    --brand: #0b1f31; --accent: #5fbf8a; --accent-soft: #1a3527; --tag: #22313a;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 400 15px/1.55 "Open Sans", system-ui, sans-serif; }
+header { background: var(--brand); color: var(--brand-ink); padding: 40px 16px 36px; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1 { font: 700 clamp(28px, 5vw, 40px)/1.1 "Barlow Semi Condensed", system-ui, sans-serif; margin: 0 0 8px; }
+header p { margin: 0; color: var(--brand-ink-2); max-width: 60ch; }
+main { padding: 28px 16px 48px; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.card { display: flex; flex-direction: column; gap: 8px; padding: 20px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
+.card:hover, .card:focus-visible { border-color: var(--accent); transform: translateY(-2px); outline: none; }
+.card h2 { font: 700 22px/1.2 "Barlow Semi Condensed", system-ui, sans-serif; margin: 4px 0 0; }
+.card p { margin: 0; color: var(--ink-2); flex: 1; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--tag); color: var(--ink-2); }
+.tag.datos { background: var(--accent-soft); color: var(--accent); }
+.fecha { font-size: 13px; color: var(--ink-3); }
+footer { padding: 0 16px 32px; color: var(--ink-3); font-size: 13px; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Maquetas UIA</h1>
+  <p>Prototipos navegables de la Unidad de Información y Análisis. Todos usan datos ficticios o agregados: no reflejan personas reales.</p>
+</div></header>
+<main><div class="wrap grid">
+<!--TARJETAS-->
+</div></main>
+<footer><div class="wrap">CONAF · Unidad de Información y Análisis</div></footer>
+</body>
+</html>

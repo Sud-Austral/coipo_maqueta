@@ -1,0 +1,12 @@
+# Fuente de cada maqueta: vive local (o en su propio repo privado), nunca aquí.
+# Este repo solo versiona sitio/ (salida publicada, sin datos personales) y las
+# herramientas para construirla. Ver README.md.
+/*/
+!/sitio/
+!/herramientas/
+!/.github/
+
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

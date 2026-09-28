@@ -1,0 +1,11 @@
+[
+  {
+    "carpeta": "personal",
+    "titulo": "Atrasos y Justificativos",
+    "descripcion": "Análisis de atrasos registrados en GeoVictoria y gestión de su regularización: solicitudes de justificativo, informes por división y cierre mensual.",
+    "cliente": "GEDEP",
+    "estado": "prototipo",
+    "datos": "ficticios",
+    "actualizado": "2026-09-28"
+  }
+]

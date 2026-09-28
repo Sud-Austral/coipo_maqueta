@@ -1,0 +1,38 @@
+name: Publicar sitio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar sitio/ contra maquetas.json (RUT, correos, registro)
+        run: python3 herramientas/construir_portal.py
+      - name: Verificar que la validación no dejó cambios sin commitear
+        run: git diff --exit-code -- sitio/index.html || (echo "sitio/index.html en el repo quedó desactualizado; correr construir_portal.py y hacer commit" && exit 1)
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sitio
+
+  publicar:
+    needs: validar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
