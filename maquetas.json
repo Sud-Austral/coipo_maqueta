@@ -7,5 +7,14 @@
     "estado": "prototipo",
     "datos": "ficticios",
     "actualizado": "2026-09-28"
+  },
+  {
+    "carpeta": "canal-ley21719",
+    "titulo": "Canal de Derechos — Ley N° 21.719",
+    "descripcion": "Recepción y gestión de solicitudes de ejercicio de derechos de titulares de datos personales (Ley N° 21.719), con formulario web y bandeja interna por perfiles.",
+    "cliente": "Transparencia",
+    "estado": "prototipo",
+    "datos": "ficticios",
+    "actualizado": "2026-10-08"
   }
 ]
