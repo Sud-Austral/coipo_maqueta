@@ -24,7 +24,7 @@ PERMITIDOS = {
     # canal-ley21719: placeholders, casillas institucionales y casos ficticios de demostración
     '12.345.678-9', '9.876.543-2',
     '8.765.432-1', '15.222.333-4', '6.111.222-3', '11.333.444-5',
-    '13.555.666-7', '9.888.777-5', '7.444.555-6', '10.999.888-K',
+    '13.555.666-7', '14.333.222-1', '9.888.777-5', '7.444.555-6', '10.999.888-K',
     'consulta.oirs@conaf.cl', 'datospersonales@conaf.cl',
 }
 TEXTO = ('.html', '.js', '.json', '.css', '.csv', '.txt', '.md', '.svg')
