@@ -19,8 +19,8 @@
   },
   {
     "carpeta": "pasillo",
-    "titulo": "Pasillo de muestras: una pieza por gerencia",
-    "descripcion": "Ocho gerencias, cada una con su banner y dos líneas de catálogo. Insignia: mapas 3D con relieve real, globo con arcos de cooperación, paralaje, radar, grafo, Sankey y relato con scroll. Esencial: lo que toda app necesita. Para elegir «quiero que se vea más o menos así».",
+    "titulo": "Pasillo de capacidades: elige cómo se ve tu aplicación",
+    "descripcion": "Un catálogo en vivo de lo que la fábrica COIPO sabe hacer: 16 piezas que funcionan, dos por gerencia, cada gerencia con su banner. Portada con relieve 3D y satélite, rieles con avances en vivo, comparador Insignia/Esencial, «Mi pedido» para anotar, compartir e imprimir, paleta Ctrl+K y la guía de Forestín. Hecho con la semilla nueva: TypeScript y arquitectura hexagonal.",
     "cliente": "Todas las gerencias",
     "estado": "prototipo",
     "datos": "ficticios",
