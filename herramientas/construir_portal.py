@@ -3,7 +3,8 @@
 Falla (código 1) si:
   - una carpeta de sitio/ no está registrada en maquetas.json, o una registrada no tiene index.html;
   - una maqueta no declara datos publicables («ficticios», «agregados» o «sin_datos»);
-  - algún archivo publicado contiene un valor con forma de RUT o una casilla @conaf.cl real.
+  - algún archivo publicado contiene un RUT (con su dígito verificador válido) o una casilla
+    @conaf.cl real.
 
 Uso:  python herramientas/construir_portal.py
 """
@@ -30,6 +31,25 @@ PERMITIDOS = {
 TEXTO = ('.html', '.js', '.json', '.css', '.csv', '.txt', '.md', '.svg')
 
 
+def dv_valido(rut):
+    """True si el dígito verificador del RUT es el que da el módulo 11.
+
+    Un RUT real siempre lo tiene correcto; un número cualquiera con forma de RUT, sólo 1 de
+    cada 11 veces. Decidido por Luis Monsalve el 2026-10-24: la hoja de estilos de MapLibre
+    (la maqueta «pasillo») trae 34 coordenadas de íconos SVG con forma de RUT
+    («1.009.413-1») y NINGUNA con el dígito válido; bloqueaban la publicación. Lo que se
+    acepta perder: un RUT real mal tipeado, con el dígito equivocado, ya no bloquea.
+    """
+    cuerpo, _, digito = rut.partition('-')
+    suma, factor = 0, 2
+    for d in reversed(re.sub(r'\D', '', cuerpo)):
+        suma += int(d) * factor
+        factor = 2 if factor == 7 else factor + 1
+    resto = 11 - suma % 11
+    esperado = '0' if resto == 11 else 'K' if resto == 10 else str(resto)
+    return digito.upper() == esperado
+
+
 def revisar_archivos(errores):
     for dirpath, _, archivos in os.walk(SITIO):
         for a in archivos:
@@ -37,7 +57,8 @@ def revisar_archivos(errores):
             if not a.endswith(TEXTO):
                 continue
             txt = open(ruta, encoding='utf-8', errors='replace').read()
-            hallados = {m.group(0) for p in (RUT, CORREO) for m in p.finditer(txt)} - PERMITIDOS
+            ruts = {m.group(0) for m in RUT.finditer(txt) if dv_valido(m.group(0))}
+            hallados = (ruts | {m.group(0) for m in CORREO.finditer(txt)}) - PERMITIDOS
             if hallados:
                 errores.append(f'{os.path.relpath(ruta, RAIZ)}: posibles datos personales {sorted(hallados)[:5]}')
 

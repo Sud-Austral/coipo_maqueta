@@ -20,7 +20,7 @@
   {
     "carpeta": "pasillo",
     "titulo": "Pasillo de muestras: una pieza por gerencia",
-    "descripcion": "Ocho habitaciones armadas, una por gerencia y con su banner, cada una con una pieza distinta: tarjetas con filtros, gráfico, barras por región, kanban, formulario, tabla ordenable, presupuesto y agenda. Para elegir «quiero que se vea más o menos así».",
+    "descripcion": "Ocho gerencias, cada una con su banner y dos líneas de catálogo. Insignia: mapas 3D con relieve real, globo con arcos de cooperación, paralaje, radar, grafo, Sankey y relato con scroll. Esencial: lo que toda app necesita. Para elegir «quiero que se vea más o menos así».",
     "cliente": "Todas las gerencias",
     "estado": "prototipo",
     "datos": "ficticios",
