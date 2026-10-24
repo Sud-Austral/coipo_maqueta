@@ -1,0 +1,1 @@
+import{tt as e}from"./index-DMfN1_tR.js";var t=e();function n(e){return`${e}-${(0,t.useId)().replace(/[^a-zA-Z0-9_-]/g,``)}`}export{n as t};
