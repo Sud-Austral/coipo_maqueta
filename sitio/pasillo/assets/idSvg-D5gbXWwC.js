@@ -1,1 +1,0 @@
-import{_ as e}from"./index-DzTOXpWO.js";var t=e();function n(e){return`${e}-${(0,t.useId)().replace(/[^a-zA-Z0-9_-]/g,``)}`}export{n as t};

@@ -1,1 +1,0 @@
-function e(e=7){let t=e>>>0;return()=>(t=Math.imul(t,1664525)+1013904223>>>0,t/4294967296)}export{e as t};
