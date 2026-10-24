@@ -25,5 +25,14 @@
     "estado": "prototipo",
     "datos": "ficticios",
     "actualizado": "2026-10-24"
+  },
+  {
+    "carpeta": "pasillo-chile",
+    "titulo": "El pasillo es Chile (prueba de concepto)",
+    "descripcion": "La portada del pasillo como un viaje: el scroll lleva la cámara desde la órbita a Chile y de norte a sur, y cada gerencia aparece en su territorio con sus datos sobre el terreno y su pieza a un clic. Tres de nueve paradas: Asuntos Institucionales, SECOM e Incendios.",
+    "cliente": "Todas las gerencias",
+    "estado": "prototipo",
+    "datos": "ficticios",
+    "actualizado": "2026-10-24"
   }
 ]
