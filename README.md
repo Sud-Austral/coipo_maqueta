@@ -13,7 +13,7 @@ que se hace push a `main`; ver «Publicar» más abajo).
 maquetas.json                 registro de maquetas: una entrada por maqueta publicada
 sitio/                        lo que se publica tal cual en GitHub Pages
   index.html                  portada (generada, no editar a mano)
-  <carpeta>/                  una maqueta compilada y autocontenida (HTML+JS+datos en un archivo)
+  <carpeta>/                  una maqueta compilada: un solo index.html, o una compilación con assets/ (pasillo, pasillo-chile)
 herramientas/
   portal.html                 plantilla de la portada
   construir_portal.py         valida sitio/ contra maquetas.json y genera sitio/index.html
@@ -27,19 +27,35 @@ este repositorio** — en el repo del proyecto correspondiente, o en una carpeta
 la maqueta ya compilada, autocontenida y con datos ficticios o agregados, más el registro en
 `maquetas.json`.
 
+## Maquetas publicadas (VERIFICADO en `maquetas.json`, 2026-10-24)
+
+| Carpeta | Cliente | Datos |
+|---|---|---|
+| `personal` | GEDEP | ficticios |
+| `canal-ley21719` | Transparencia | ficticios |
+| `pasillo` | Todas las gerencias | ficticios |
+| `pasillo-chile` | Todas las gerencias | ficticios |
+
+`pasillo` y `pasillo-chile` son compilaciones de otra aplicación (TypeScript, arquitectura hexagonal, según su
+descripción en `maquetas.json`) cuya fuente no está aquí. Sus HTML apuntan a rutas absolutas bajo
+`/coipo_maqueta/<carpeta>/assets/…`, así que sólo funcionan publicadas con ese nombre de repositorio.
+
 ## Por qué está separado así
 
 Este repo es público (o de acceso amplio) porque es lo que se comparte con usuarios y expertos.
 Las fuentes suelen tener datos reales (nombres, RUT, bases de prueba) que **nunca** deben llegar
 a un commit aquí, ni siquiera de forma transitoria: un `git push --force` no borra lo que ya se
 subió. Por eso `construir_portal.py` es una guarda, no una formalidad — falla si detecta algo
-con forma de RUT o de correo `@conaf.cl` real, o si una carpeta de `sitio/` no está registrada.
+con forma de RUT **con dígito verificador válido** (decisión del 2026-10-24: los íconos SVG de MapLibre traían
+números con forma de RUT que bloqueaban la publicación) o de correo `@conaf.cl` real fuera de la lista
+`PERMITIDOS`, o si una carpeta de `sitio/` no está registrada. Un RUT real mal tipeado ya no bloquea.
 
 ## Agregar una maqueta nueva
 
-1. Compilar la maqueta en un **único HTML autocontenido** (sin dependencias externas rotas: los
-   `<script src>`/`<link>` externos deben ser CDN públicos, como fuentes de Google Fonts).
-2. Copiarlo a `sitio/<carpeta-nueva>/index.html`.
+1. Compilar la maqueta: lo más simple es un **único HTML autocontenido** (los `<script src>`/`<link>` externos
+   deben ser CDN públicos, como fuentes de Google Fonts); una compilación con `assets/` también se acepta si sus
+   rutas parten de `/coipo_maqueta/<carpeta>/`.
+2. Copiarla a `sitio/<carpeta-nueva>/` (con su `index.html`).
 3. Agregar una entrada en `maquetas.json`:
    ```json
    {
@@ -75,3 +91,8 @@ datos reales, generados con la base de prueba — ver `personal/README.md`), ree
 apellido de cada persona por un nombre ficticio determinista, compila con `personal/app/build.py`
 y verifica que ningún nombre real haya quedado en la salida antes de escribir
 `sitio/personal/index.html`.
+
+## Documentación
+
+- [`CLAUDE.md`](CLAUDE.md): guía para agentes (qué no tocar, comandos, trampas).
+- [`insumos/00-PROBLEMA.md`](insumos/00-PROBLEMA.md) y [`insumos/01-SOLUCION.md`](insumos/01-SOLUCION.md): problema y solución del portal.
