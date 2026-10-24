@@ -1,0 +1,1 @@
+import{a as e}from"./estados-DWhIUN-B.js";import{jt as t}from"./index-F7KpyzyW.js";var n=t();function r({forma:t,x:r,y:i,t:a=7,className:o}){return t===`circulo`?(0,n.jsx)(`circle`,{className:o,cx:r,cy:i,r:a}):t===`cuadrado`?(0,n.jsx)(`rect`,{className:o,x:r-a*.85,y:i-a*.85,width:a*1.7,height:a*1.7}):(0,n.jsx)(`polygon`,{className:o,points:e(r,i,a)})}export{r as t};
