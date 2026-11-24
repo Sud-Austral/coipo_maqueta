@@ -4,8 +4,20 @@ Portal de maquetas de la Unidad de Información y Análisis (UIA), publicado con
 Reúne prototipos navegables para mostrar a usuarios y expertos antes de construir la versión
 de producción. Pensado para crecer: cada maqueta nueva se agrega sin tocar las demás.
 
-**Sitio publicado:** `https://sud-austral.github.io/coipo_maqueta/` (se activa la primera vez
-que se hace push a `main`; ver «Publicar» más abajo).
+**Sitio publicado:** `https://sud-austral.github.io/coipo_maqueta/`. Comprobado el 2026-11-24:
+la portada y las tres maquetas responden 200.
+
+## Maquetas publicadas (2026-11-24, según `maquetas.json`)
+
+| Carpeta | Estado | Datos |
+|---|---|---|
+| `sitio/personal/` | prototipo | ficticios |
+| `sitio/canal-ley21719/` | prototipo | ficticios |
+| `sitio/pasillo/` | prototipo | ficticios |
+
+`pasillo` (exposición de capacidades, «El pasillo es Chile») no es un HTML único: trae
+`assets/`, `capas/`, `gerencias/` y banners. La guarda recorre todos los archivos de texto
+de `sitio/`, así que una maqueta de varios archivos también se valida.
 
 ## Estructura
 
@@ -13,7 +25,7 @@ que se hace push a `main`; ver «Publicar» más abajo).
 maquetas.json                 registro de maquetas: una entrada por maqueta publicada
 sitio/                        lo que se publica tal cual en GitHub Pages
   index.html                  portada (generada, no editar a mano)
-  <carpeta>/                  una maqueta compilada y autocontenida (HTML+JS+datos en un archivo)
+  <carpeta>/                  una maqueta compilada (normalmente un HTML autocontenido; puede traer assets)
 herramientas/
   portal.html                 plantilla de la portada
   construir_portal.py         valida sitio/ contra maquetas.json y genera sitio/index.html
@@ -33,7 +45,13 @@ Este repo es público (o de acceso amplio) porque es lo que se comparte con usua
 Las fuentes suelen tener datos reales (nombres, RUT, bases de prueba) que **nunca** deben llegar
 a un commit aquí, ni siquiera de forma transitoria: un `git push --force` no borra lo que ya se
 subió. Por eso `construir_portal.py` es una guarda, no una formalidad — falla si detecta algo
-con forma de RUT o de correo `@conaf.cl` real, o si una carpeta de `sitio/` no está registrada.
+con forma de RUT **con dígito verificador válido** o un correo `@conaf.cl`, salvo los de la lista
+blanca del propio script, o si una carpeta de `sitio/` no está registrada. Lo del dígito verificador
+se decidió el 2026-10-24: la hoja de estilos de MapLibre del pasillo traía coordenadas con forma de
+RUT y bloqueaban la publicación; el costo aceptado es que un RUT real mal tipeado ya no bloquea.
+
+Verificado el 2026-11-24: `python herramientas/construir_portal.py` → `OK: 3 maqueta(s) validadas`, sin
+cambios en `sitio/index.html`.
 
 ## Agregar una maqueta nueva
 
@@ -62,10 +80,11 @@ con forma de RUT o de correo `@conaf.cl` real, o si una carpeta de `sitio/` no e
 5. Revisar `git status`, hacer commit y push a `main`. El workflow de GitHub Actions valida de
    nuevo (independiente de que ya haya pasado local) y despliega.
 
-## Publicar (una sola vez)
+## Publicar
 
-En GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**. De ahí en
-adelante cada push a `main` que pase la validación se publica solo.
+Ya está configurado (Pages con Source: GitHub Actions; el sitio responde). Cada push a `main`
+que pase la validación se publica solo; también se puede lanzar a mano (`workflow_dispatch`).
+El workflow falla si `sitio/index.html` quedó desactualizado respecto de `maquetas.json`.
 
 ## La maqueta «Atrasos y Justificativos» (ejemplo)
 
